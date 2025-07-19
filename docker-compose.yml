@@ -1,0 +1,38 @@
+# AK Fitness - Docker Compose Yapılandırması
+# Bu dosya ile web sitesini kolayca çalıştırabilirsiniz
+
+services:
+  # Ana web sitesi
+  ak-fitness:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - ak-fitness-network
+
+  # Geliştirme ortamı (hot reload)
+  ak-fitness-dev:
+    build: .
+    ports:
+      - "3000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+    networks:
+      - ak-fitness-network
+    profiles:
+      - dev
+
+networks:
+  ak-fitness-network:
+    driver: bridge
+
+volumes:
+  ak-fitness-data: 

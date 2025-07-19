@@ -1,0 +1,58 @@
+{
+  "name": "ak-fitness",
+  "version": "1.0.0",
+  "description": "İstanbul fitness merkezleri için modern web sitesi şablonu",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "npx cssnano assets/css/style.css -o assets/css/style.min.css",
+    "build:js": "npx terser assets/js/script.js -o assets/js/script.min.js",
+    "lint": "npx eslint assets/js/script.js",
+    "format": "npx prettier --write assets/css/style.css assets/js/script.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:build": "docker build -t ak-fitness .",
+    "docker:run": "docker run -p 8000:80 ak-fitness",
+    "docker:compose": "docker-compose up -d",
+    "docker:compose:dev": "docker-compose --profile dev up -d"
+  },
+  "keywords": [
+    "fitness",
+    "gym",
+    "istanbul",
+    "bootstrap",
+    "responsive",
+    "template",
+    "html5",
+    "css3",
+    "javascript"
+  ],
+  "author": "a.koc <ak@ak-pro.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ak-hosting/ak-fitness.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ak-hosting/ak-fitness/issues"
+  },
+  "homepage": "https://ak-hosting.github.io/ak-fitness",
+  "devDependencies": {
+    "cssnano": "^6.0.0",
+    "terser": "^5.24.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.0",
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+} 
